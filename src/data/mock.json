@@ -1,0 +1,42 @@
+[
+    {
+        "purchase_date":"2022-07-21T17:23:05.591Z",
+        "name_of_product": "Hair Cream",
+        "name_of_store": ""
+    },
+    {
+        "purchase_date":"2022-03-25T00:15:36.491Z",
+        "name_of_product": "Vegetables",
+        "name_of_store": ""
+    },
+    {
+        "purchase_date":"2022-03-12T00:07:25.355Z",
+        "name_of_product": "Book",
+        "name_of_store": ""
+    },
+    {
+        "purchase_date":"2022-03-15T00:12:21.023Z",
+        "name_of_product": "Pencil",
+        "name_of_store": ""
+    },
+    {
+        "purchase_date":"20222-03-25T00:05:15.320Z",
+        "name_of_product": "Keyboard",
+        "name_of_store": ""
+    },
+    {
+        "purchase_date":"20222-03-25T00:00:00.000Z",
+        "name_of_product": "Sample 1",
+        "name_of_store": ""
+    },
+    {
+        "purchase_date":"20222-04-15T00:00:00.000Z",
+        "name_of_product": "Sample 1",
+        "name_of_store": ""
+    },
+    {
+        "purchase_date":"20222-05-05T00:13:33.211Z",
+        "name_of_product": "Sample 1",
+        "name_of_store": ""
+    }
+]
