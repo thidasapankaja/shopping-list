@@ -76,7 +76,28 @@ const Shopping = ({
           ))}
         </Suspense>
       </section>
-      {shoppingList.length > 0 ? renderTable(shoppingList) : null}
+      <div style={{marginTop:'50px'}}>
+        {shoppingList.length > 0 && (
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "flex-end",
+              margin: "0 230px",
+            }}
+          >
+            <button
+              style={{ textAlign: "center" }}
+              ref={tableRef}
+              disabled={shoppingList?.length <= 0}
+              className="button purchaseButton"
+              onClick={onCheckout}
+            >
+              Purchase
+            </button>
+          </div>
+        )}
+        {shoppingList.length > 0 ? renderTable(shoppingList) : null}
+      </div>
     </div>
   );
 };
