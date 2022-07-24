@@ -93,7 +93,7 @@ const ItemsTable = ({
         cell?.store.includes(filter.store)
       ) {
         return (
-          <tr>
+          <tr key={cell.purchasedDate}>
             <td className="alignCenter">{cell?.name}</td>
             <td className="alignCenter">
               <a style={{ all: "unset", cursor:'pointer' }} href={cell?.storeUrl} target="_blank" rel="noreferrer">

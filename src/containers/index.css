@@ -12,6 +12,12 @@
     color: white;
   }
 
+  .purchaseButton:disabled{
+    background: #dddddd;
+    pointer-events: none;
+    opacity: 0.6;
+  }
+
   .cartButton {
     background-color: white;
     color: black;

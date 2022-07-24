@@ -9,6 +9,7 @@ type CardProps = {
 
 const Card = ({ item, addItem }: CardProps) => {
   const { name, image, store, price } = item;
+
   return (
     <div className="card">
       <img style={{ maxWidth: "350px" }} src={image} alt={name} />
@@ -21,7 +22,10 @@ const Card = ({ item, addItem }: CardProps) => {
           <div style={{ fontWeight: "800" }}>{price} $</div>
         </div>
         <div>
-          <button className="addButton" onClick={() => addItem(item)}> +</button>
+          <button className="addButton" onClick={() => addItem(item)}>
+            {" "}
+            +
+          </button>
         </div>
       </div>
     </div>

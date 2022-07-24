@@ -1,6 +1,6 @@
 import { lazy, Suspense, useRef } from "react";
 import { Item, PurchasedtItem } from "../models/Item";
-import './index.css'
+import "./index.css";
 
 const Card = lazy(() => import("../components/Card"));
 const ItemsTable = lazy(() => import("../components/ItemsTable"));
@@ -21,12 +21,15 @@ const Shopping = ({
   onCheckout,
 }: ShoppingProps) => {
   const tableRef = useRef<any>(null);
-  console.log("tableRef: , ", tableRef);
   const renderTable = (items: PurchasedtItem[]) => {
     return (
       <Suspense>
         <div>
-          <ItemsTable data={items} removeItem={removeItem} onCheckout={onCheckout} />
+          <ItemsTable
+            data={items}
+            removeItem={removeItem}
+            onCheckout={onCheckout}
+          />
         </div>
       </Suspense>
     );
@@ -42,12 +45,22 @@ const Shopping = ({
         }}
       >
         <div>
-          <button className="button purchaseButton" disabled={shoppingList?.length <= 0} onClick={onCheckout}>
+          <button
+            disabled={shoppingList?.length <= 0}
+            className="button purchaseButton"
+            onClick={onCheckout}
+          >
             Purchase
           </button>
         </div>
         <div>
-          <button className="button cartButton" onClick={() => tableRef.current.focus()}> Cart </button>
+          <button
+            className="button cartButton"
+            onClick={() => tableRef.current.focus()}
+          >
+            {" "}
+            Cart{" "}
+          </button>
         </div>
       </div>
       <section

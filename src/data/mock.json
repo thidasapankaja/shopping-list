@@ -1,42 +1,110 @@
 [
-    {
-        "purchase_date":"2022-07-21T17:23:05.591Z",
-        "name_of_product": "Hair Cream",
-        "name_of_store": ""
-    },
-    {
-        "purchase_date":"2022-03-25T00:15:36.491Z",
-        "name_of_product": "Vegetables",
-        "name_of_store": ""
-    },
-    {
-        "purchase_date":"2022-03-12T00:07:25.355Z",
-        "name_of_product": "Book",
-        "name_of_store": ""
-    },
-    {
-        "purchase_date":"2022-03-15T00:12:21.023Z",
-        "name_of_product": "Pencil",
-        "name_of_store": ""
-    },
-    {
-        "purchase_date":"20222-03-25T00:05:15.320Z",
-        "name_of_product": "Keyboard",
-        "name_of_store": ""
-    },
-    {
-        "purchase_date":"20222-03-25T00:00:00.000Z",
-        "name_of_product": "Sample 1",
-        "name_of_store": ""
-    },
-    {
-        "purchase_date":"20222-04-15T00:00:00.000Z",
-        "name_of_product": "Sample 1",
-        "name_of_store": ""
-    },
-    {
-        "purchase_date":"20222-05-05T00:13:33.211Z",
-        "name_of_product": "Sample 1",
-        "name_of_store": ""
-    }
+  {
+    "id": "0001",
+    "name": "AIR FORCE 1",
+    "image": "../../assets/11912409_34680507.png",
+    "price": "99",
+    "quantity": 100,
+    "store": "Nike Australia",
+    "storeUrl": "https://www.nike.com/au/"
+  },
+  {
+    "id": "0002",
+    "name": "Dunk Low 'Georgetown'",
+    "image": "../../assets/11912409_34680507.png",
+    "price": "92",
+    "quantity": 30,
+    "store": "Nike Australia",
+    "storeUrl": "https://www.nike.com/au/"
+  },
+  {
+    "id": "0003",
+    "name": "AIR MAX 1 ",
+    "image": "../../assets/11912409_34680507.png",
+    "price": "77",
+    "quantity": 5,
+    "store": "Nike Spain",
+    "storeUrl": "https://www.nike.com/es/"
+  },
+  {
+    "id": "0004",
+    "name": "LOUIS VUITTON AIR",
+    "image": "../../assets/11912409_34680507.png",
+    "price": "99",
+    "quantity": 4,
+    "store": "Nike Spain",
+    "storeUrl": "https://www.nike.com/es/"
+  },
+  {
+    "id": "0004",
+    "name": "Nike Air 1",
+    "image": "../../assets/11912409_34680507.png",
+    "price": "112",
+    "quantity": 33,
+    "store": "Nike Netherlands",
+    "storeUrl": "https://www.nike.com/nl/en/"
+  },
+  {
+    "id": "0005",
+    "name": "Nike Dunk 32",
+    "image": "../../assets/11912409_34680507.png",
+    "price": "62",
+    "quantity": 12,
+    "store": "Nike Luxembourg",
+    "storeUrl": "https://www.nike.com/lu/en/"
+  },
+  {
+    "id": "0006",
+    "name": "Best 677",
+    "image": "../../assets/11912409_34680507.png",
+    "price": "65",
+    "quantity": 18,
+    "store": "Nike Luxembourg",
+    "storeUrl": "https://www.nike.com/lu/en/"
+  },
+  {
+    "id": "0007",
+    "name": "Dunk 8",
+    "image": "../../assets/11912409_34680507.png",
+    "price": "33",
+    "quantity": 21,
+    "store": "Nike Belgium",
+    "storeUrl": "https://www.nike.com/be/en/"
+  },
+  {
+    "id": "0008",
+    "name": "AIR FORCE 18",
+    "image": "../../assets/11912409_34680507.png",
+    "price": "159",
+    "quantity": 25,
+    "store": "Nike Denmark",
+    "storeUrl": "https://www.nike.com/dk/en/"
+  },
+  {
+    "id": "0009",
+    "name": "Dremland",
+    "image": "../../assets/11912409_34680507.png",
+    "price": "52",
+    "quantity": 33,
+    "store": "Nike Denmark",
+    "storeUrl": "https://www.nike.com/dk/en/"
+  },
+  {
+    "id": "0010",
+    "name": "Air Min xx1",
+    "image": "../../assets/11912409_34680507.png",
+    "price": "152",
+    "quantity": 35,
+    "store": "Nike Denmark",
+    "storeUrl": "https://www.nike.com/dk/en/"
+  },
+  {
+    "id": "0011",
+    "name": "High 67",
+    "image": "../../assets/11912409_34680507.png",
+    "price": "82",
+    "quantity": 55,
+    "store": "Nike Denmark",
+    "storeUrl": "https://www.nike.com/dk/en/"
+  }
 ]
