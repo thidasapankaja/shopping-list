@@ -172,7 +172,7 @@ const ItemsTable = ({
           <thead>
             <tr>
               {renderingColumns?.map((column: string) => (
-                <th>{column}</th>
+                <th key={column}>{column}</th>
               ))}
             </tr>
           </thead>

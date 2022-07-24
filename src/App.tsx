@@ -23,12 +23,12 @@ import img12 from "./assets/15087982_27542588.png";
 const storeList = [
   {
     id: "0001",
-    name: 'AIR FORCE 1',
+    name: "AIR FORCE 1",
     image: img1,
     price: "99",
-    quantity: 100,
-    store: 'Nike Australia',
-    storeUrl: 'https://www.nike.com/au/'
+    quantity: 2,
+    store: "Nike Australia",
+    storeUrl: "https://www.nike.com/au/",
   },
   {
     id: "0002",
@@ -36,26 +36,26 @@ const storeList = [
     image: img2,
     price: "92",
     quantity: 30,
-    store: 'Nike Australia',
-    storeUrl: 'https://www.nike.com/au/'
+    store: "Nike Australia",
+    storeUrl: "https://www.nike.com/au/",
   },
   {
     id: "0003",
-    name: 'AIR MAX 1 ',
+    name: "AIR MAX 1 ",
     image: img3,
     price: "77",
     quantity: 5,
-    store: 'Nike Spain',
-    storeUrl: 'https://www.nike.com/es/'
+    store: "Nike Spain",
+    storeUrl: "https://www.nike.com/es/",
   },
   {
     id: "0014",
-    name: 'LOUIS VUITTON AIR',
+    name: "LOUIS VUITTON AIR",
     image: img4,
     price: "99",
     quantity: 4,
-    store: 'Nike Spain',
-    storeUrl: 'https://www.nike.com/es/'
+    store: "Nike Spain",
+    storeUrl: "https://www.nike.com/es/",
   },
   {
     id: "0004",
@@ -63,8 +63,8 @@ const storeList = [
     image: img5,
     price: "112",
     quantity: 33,
-    store: 'Nike Netherlands',
-    storeUrl: 'https://www.nike.com/nl/en/'
+    store: "Nike Netherlands",
+    storeUrl: "https://www.nike.com/nl/en/",
   },
   {
     id: "0005",
@@ -72,8 +72,8 @@ const storeList = [
     image: img6,
     price: "62",
     quantity: 12,
-    store: 'Nike Luxembourg',
-    storeUrl: 'https://www.nike.com/lu/en/'
+    store: "Nike Luxembourg",
+    storeUrl: "https://www.nike.com/lu/en/",
   },
   {
     id: "0006",
@@ -81,8 +81,8 @@ const storeList = [
     image: img7,
     price: "65",
     quantity: 18,
-    store: 'Nike Luxembourg',
-    storeUrl: 'https://www.nike.com/lu/en/'
+    store: "Nike Luxembourg",
+    storeUrl: "https://www.nike.com/lu/en/",
   },
   {
     id: "0007",
@@ -90,8 +90,8 @@ const storeList = [
     image: img8,
     price: "33",
     quantity: 21,
-    store: 'Nike Belgium',
-    storeUrl: 'https://www.nike.com/be/en/'
+    store: "Nike Belgium",
+    storeUrl: "https://www.nike.com/be/en/",
   },
   {
     id: "0008",
@@ -99,8 +99,8 @@ const storeList = [
     image: img9,
     price: "159",
     quantity: 25,
-    store: 'Nike Denmark',
-    storeUrl: 'https://www.nike.com/dk/en/'
+    store: "Nike Denmark",
+    storeUrl: "https://www.nike.com/dk/en/",
   },
   {
     id: "0009",
@@ -108,8 +108,8 @@ const storeList = [
     image: img10,
     price: "52",
     quantity: 33,
-    store: 'Nike Denmark',
-    storeUrl: 'https://www.nike.com/dk/en/'
+    store: "Nike Denmark",
+    storeUrl: "https://www.nike.com/dk/en/",
   },
   {
     id: "0010",
@@ -117,8 +117,8 @@ const storeList = [
     image: img11,
     price: "152",
     quantity: 35,
-    store: 'Nike Denmark',
-    storeUrl: 'https://www.nike.com/dk/en/'
+    store: "Nike Denmark",
+    storeUrl: "https://www.nike.com/dk/en/",
   },
   {
     id: "0011",
@@ -126,8 +126,8 @@ const storeList = [
     image: img12,
     price: "82",
     quantity: 55,
-    store: 'Nike Denmark',
-    storeUrl: 'https://www.nike.com/dk/en/'
+    store: "Nike Denmark",
+    storeUrl: "https://www.nike.com/dk/en/",
   },
 ];
 
@@ -140,36 +140,46 @@ function App() {
   const addItemToList = (item: Item) => {
     let isExisting = shoppingList?.find(listItem => listItem?.id === item.id);
     let updatedItems = [];
-    if (isExisting) {
-      updatedItems = shoppingList?.map((li: PurchasedtItem) => {
-        if (li.id === item.id) {
-          return {
-            ...li,
-            quantity: (li.quantity || 0) + 1,
-            purchasedDate: Date.now(),
-          };
-        }
-        return li;
-      });
-
-      setShoppingList(updatedItems);
-    } else {
-      setShoppingList([
-        ...shoppingList,
-        { ...item, quantity: 1, purchasedDate: Date.now() },
-      ]);
-    }
+    let outOfStock = false;
 
     const storeUpdatedList = storeItems?.map((listItem: Item) => {
       if (item.id === listItem.id) {
-        return {
-          ...listItem,
-          quantity: listItem?.quantity ? listItem?.quantity - 1 : 0,
-        };
+        if (listItem && listItem.quantity && listItem.quantity > 0) {
+          return {
+            ...listItem,
+            quantity: listItem?.quantity ? listItem?.quantity - 1 : 0,
+          };
+        } else {
+          outOfStock = true;
+          alert("Item out of stock");
+        }
       }
       return listItem;
     });
+
     setStoreItems(storeUpdatedList);
+
+    if (!outOfStock) {
+      if (isExisting) {
+        updatedItems = shoppingList?.map((li: PurchasedtItem) => {
+          if (li.id === item.id) {
+            return {
+              ...li,
+              quantity: (li.quantity || 0) + 1,
+              purchasedDate: Date.now(),
+            };
+          }
+          return li;
+        });
+
+        setShoppingList(updatedItems);
+      } else {
+        setShoppingList([
+          ...shoppingList,
+          { ...item, quantity: 1, purchasedDate: Date.now() },
+        ]);
+      }
+    }
   };
 
   const removeItemFromList = (id: string) => {
@@ -186,7 +196,7 @@ function App() {
     const completedPurchase: CompletedPurchase = {
       total,
       completedOn: Date.now(),
-      items: shoppingList
+      items: shoppingList,
     };
 
     setCompleted([...completed, completedPurchase]);
@@ -197,22 +207,27 @@ function App() {
   return (
     <div>
       <NavBar />
-      <Routes>
-        <Route path="/history" element={<History completedPurchases={completed} />} />
-        <Route
-          path="/shopping"
-          element={
-            <Shopping
-              addItem={addItemToList}
-              availableItems={storeItems}
-              shoppingList={shoppingList}
-              removeItem={removeItemFromList}
-              onCheckout={onCheckout}
-            />
-          }
-        />
-        <Route path="*" element={<Landing />} />
-      </Routes>
+      <div>
+        <Routes>
+          <Route
+            path="/history"
+            element={<History completedPurchases={completed} />}
+          />
+          <Route
+            path="/shopping"
+            element={
+              <Shopping
+                addItem={addItemToList}
+                availableItems={storeItems}
+                shoppingList={shoppingList}
+                removeItem={removeItemFromList}
+                onCheckout={onCheckout}
+              />
+            }
+          />
+          <Route path="*" element={<Landing />} />
+        </Routes>
+      </div>
     </div>
   );
 }
