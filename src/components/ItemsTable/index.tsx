@@ -53,7 +53,7 @@ const ItemsTable = ({
   const renderFooter = (items: PurchasedtItem[]) => {
     if (items?.length > 0) {
       let totalSoFar = items?.reduce(
-        (total, item) => total + parseFloat(item?.price),
+        (total, item) => total + parseFloat(item?.price) * (item?.quantity || 1),
         0
       );
       return (
@@ -67,7 +67,11 @@ const ItemsTable = ({
             <td className="alignCenter">{totalSoFar} $</td>
             {!isHistory && (
               <td className="alignCenter">
-                <button className="deleteButton" onClick={onCheckout}>
+                <button
+                  style={{ cursor: "pointer" }}
+                  className="purchaseButton"
+                  onClick={onCheckout}
+                >
                   Checkout
                 </button>
               </td>
@@ -91,7 +95,11 @@ const ItemsTable = ({
         return (
           <tr>
             <td className="alignCenter">{cell?.name}</td>
-            <td className="alignCenter">{cell?.store}</td>
+            <td className="alignCenter">
+              <a style={{ all: "unset", cursor:'pointer' }} href={cell?.storeUrl} target="_blank" rel="noreferrer">
+                {cell?.store}
+              </a>
+            </td>
             <td className="alignCenter">
               {moment(cell?.purchasedDate).format("dddd, MMMM, Do, YYYY, h:mm")}
             </td>
@@ -123,6 +131,7 @@ const ItemsTable = ({
   return (
     <div>
       <div style={{ textAlign: "center" }}>
+        Filter
         <input
           onChange={onFilterChange}
           id="name"

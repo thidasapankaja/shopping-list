@@ -29,13 +29,13 @@ const History = ({ completedPurchases }: HistoryProps) => {
     );
   };
   return (
-    <div style={{ height: "100vh", margin: "50px" }}>
+    <div style={{ margin: "50px" }}>
       <div>
         <h3>Your Purchase History</h3>
       </div>
       <ul>
         {completedPurchases?.map(purchase => (
-          <li style={{ fontSize: "20px", margin: "10px 0" }}>
+          <li key={purchase?.completedOn} style={{ fontSize: "20px", margin: "10px 0" }}>
             {moment(purchase.completedOn).format("dddd, MMMM, Do, YYYY, h:mm")}{" "}
             {purchase.total} $
             <button

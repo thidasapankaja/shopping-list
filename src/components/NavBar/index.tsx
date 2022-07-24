@@ -12,13 +12,19 @@ const NavBar = () => (
       }}
     >
       <li style={{ margin: "0 10px" }}>
-        <Link to="/">Main</Link>
+        <Link style={{ textDecoration: "none" }} to="/">
+          Main
+        </Link>
       </li>
       <li style={{ margin: "0 10px" }}>
-        <Link to="/shopping">Shopping</Link>
+        <Link style={{ textDecoration: "none" }} to="/shopping">
+          Shopping
+        </Link>
       </li>
       <li style={{ margin: "0 10px" }}>
-        <Link to="/history">History</Link>
+        <Link style={{ textDecoration: "none" }} to="/history">
+          History
+        </Link>
       </li>
     </ul>
   </div>

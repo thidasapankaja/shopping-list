@@ -5,6 +5,7 @@ export type Item = {
   quantity?: number;
   id: string;
   store: string;
+  storeUrl: string;
 };
 
 export interface PurchasedtItem extends Item {
