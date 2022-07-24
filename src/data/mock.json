@@ -1,0 +1,110 @@
+[
+  {
+    "id": "0001",
+    "name": "AIR FORCE 1",
+    "image": "../../assets/11912409_34680507.png",
+    "price": "99",
+    "quantity": 100,
+    "store": "Nike Australia",
+    "storeUrl": "https://www.nike.com/au/"
+  },
+  {
+    "id": "0002",
+    "name": "Dunk Low 'Georgetown'",
+    "image": "../../assets/11912409_34680507.png",
+    "price": "92",
+    "quantity": 30,
+    "store": "Nike Australia",
+    "storeUrl": "https://www.nike.com/au/"
+  },
+  {
+    "id": "0003",
+    "name": "AIR MAX 1 ",
+    "image": "../../assets/11912409_34680507.png",
+    "price": "77",
+    "quantity": 5,
+    "store": "Nike Spain",
+    "storeUrl": "https://www.nike.com/es/"
+  },
+  {
+    "id": "0004",
+    "name": "LOUIS VUITTON AIR",
+    "image": "../../assets/11912409_34680507.png",
+    "price": "99",
+    "quantity": 4,
+    "store": "Nike Spain",
+    "storeUrl": "https://www.nike.com/es/"
+  },
+  {
+    "id": "0004",
+    "name": "Nike Air 1",
+    "image": "../../assets/11912409_34680507.png",
+    "price": "112",
+    "quantity": 33,
+    "store": "Nike Netherlands",
+    "storeUrl": "https://www.nike.com/nl/en/"
+  },
+  {
+    "id": "0005",
+    "name": "Nike Dunk 32",
+    "image": "../../assets/11912409_34680507.png",
+    "price": "62",
+    "quantity": 12,
+    "store": "Nike Luxembourg",
+    "storeUrl": "https://www.nike.com/lu/en/"
+  },
+  {
+    "id": "0006",
+    "name": "Best 677",
+    "image": "../../assets/11912409_34680507.png",
+    "price": "65",
+    "quantity": 18,
+    "store": "Nike Luxembourg",
+    "storeUrl": "https://www.nike.com/lu/en/"
+  },
+  {
+    "id": "0007",
+    "name": "Dunk 8",
+    "image": "../../assets/11912409_34680507.png",
+    "price": "33",
+    "quantity": 21,
+    "store": "Nike Belgium",
+    "storeUrl": "https://www.nike.com/be/en/"
+  },
+  {
+    "id": "0008",
+    "name": "AIR FORCE 18",
+    "image": "../../assets/11912409_34680507.png",
+    "price": "159",
+    "quantity": 25,
+    "store": "Nike Denmark",
+    "storeUrl": "https://www.nike.com/dk/en/"
+  },
+  {
+    "id": "0009",
+    "name": "Dremland",
+    "image": "../../assets/11912409_34680507.png",
+    "price": "52",
+    "quantity": 33,
+    "store": "Nike Denmark",
+    "storeUrl": "https://www.nike.com/dk/en/"
+  },
+  {
+    "id": "0010",
+    "name": "Air Min xx1",
+    "image": "../../assets/11912409_34680507.png",
+    "price": "152",
+    "quantity": 35,
+    "store": "Nike Denmark",
+    "storeUrl": "https://www.nike.com/dk/en/"
+  },
+  {
+    "id": "0011",
+    "name": "High 67",
+    "image": "../../assets/11912409_34680507.png",
+    "price": "82",
+    "quantity": 55,
+    "store": "Nike Denmark",
+    "storeUrl": "https://www.nike.com/dk/en/"
+  }
+]

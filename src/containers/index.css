@@ -1,0 +1,30 @@
+
+  
+  .purchaseButton {
+    background-color: white;
+    color: black;
+    transition-duration: 0.4s;
+    border: 2px solid #4CAF50; /* Green */
+  }
+  
+  .purchaseButton:hover {
+    background-color: #2a832d; /* Green */
+    color: white;
+  }
+
+  .purchaseButton:disabled{
+    background: #dddddd;
+    pointer-events: none;
+    opacity: 0.6;
+  }
+
+  .cartButton {
+    background-color: white;
+    color: black;
+    border: 2px solid #555555;
+  }
+  
+  .cartButton:hover {
+    background-color: #555555;
+    color: white;
+  }
