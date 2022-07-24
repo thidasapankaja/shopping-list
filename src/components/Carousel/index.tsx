@@ -28,7 +28,7 @@ const carouselList = [
 const TopCarosel = () => (
   <Carousel showArrows autoPlay infiniteLoop showIndicators={false}>
     {carouselList?.map((item, key) => (
-      <div key={key} style={{ backgroundColor: "lightblue" }}>
+      <div key={key} style={{ backgroundColor: "#a6ceff" }}>
         <img src={item.image} alt={item.name} />
         <h2 style={{ paddingBottom: "20px" }}>{item.name}</h2>
       </div>

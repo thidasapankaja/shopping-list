@@ -51,9 +51,15 @@ const ItemsTable = ({
   };
 
   const renderFooter = (items: PurchasedtItem[]) => {
-    if (items?.length > 0) {
+    if (
+      items?.length > 0 &&
+      !filter.name &&
+      !filter.purchasedDate &&
+      !filter.store
+    ) {
       let totalSoFar = items?.reduce(
-        (total, item) => total + parseFloat(item?.price) * (item?.quantity || 1),
+        (total, item) =>
+          total + parseFloat(item?.price) * (item?.quantity || 1),
         0
       );
       return (
@@ -96,7 +102,12 @@ const ItemsTable = ({
           <tr key={cell.purchasedDate}>
             <td className="alignCenter">{cell?.name}</td>
             <td className="alignCenter">
-              <a style={{ all: "unset", cursor:'pointer' }} href={cell?.storeUrl} target="_blank" rel="noreferrer">
+              <a
+                style={{ all: "unset", cursor: "pointer" }}
+                href={cell?.storeUrl}
+                target="_blank"
+                rel="noreferrer"
+              >
                 {cell?.store}
               </a>
             </td>
@@ -137,18 +148,21 @@ const ItemsTable = ({
           id="name"
           placeholder="name"
           className="filter"
+          style={{ borderRadius: "10px" }}
         />
         <input
           onChange={onFilterChange}
           id="purchasedDate"
           placeholder="purchased date"
           className="filter"
+          style={{ borderRadius: "10px" }}
         />
         <input
           onChange={onFilterChange}
           id="store"
-          placeholder="strore"
+          placeholder="store"
           className="filter"
+          style={{ borderRadius: "10px" }}
         />
       </div>
       <div>

@@ -49,7 +49,7 @@ const storeList = [
     storeUrl: 'https://www.nike.com/es/'
   },
   {
-    id: "0004",
+    id: "0014",
     name: 'LOUIS VUITTON AIR',
     image: img4,
     price: "99",
@@ -141,7 +141,7 @@ function App() {
     let isExisting = shoppingList?.find(listItem => listItem?.id === item.id);
     let updatedItems = [];
     if (isExisting) {
-      updatedItems = shoppingList?.map((li: Item) => {
+      updatedItems = shoppingList?.map((li: PurchasedtItem) => {
         if (li.id === item.id) {
           return {
             ...li,
@@ -149,7 +149,7 @@ function App() {
             purchasedDate: Date.now(),
           };
         }
-        return { ...li, purchasedDate: Date.now() };
+        return li;
       });
 
       setShoppingList(updatedItems);

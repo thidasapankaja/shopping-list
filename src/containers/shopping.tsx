@@ -1,4 +1,5 @@
 import { lazy, Suspense, useRef } from "react";
+import Loading from "../components/Loading";
 import { Item, PurchasedtItem } from "../models/Item";
 import "./index.css";
 
@@ -23,7 +24,7 @@ const Shopping = ({
   const tableRef = useRef<any>(null);
   const renderTable = (items: PurchasedtItem[]) => {
     return (
-      <Suspense>
+      <Suspense fallback={<Loading />}>
         <div>
           <ItemsTable
             data={items}
@@ -36,12 +37,11 @@ const Shopping = ({
   };
 
   return (
-    <div>
+    <div style={{ backgroundColor: "#a6ceff", padding: "10px" }}>
       <div
         style={{
           display: "flex",
           justifyContent: "flex-end",
-          margin: "10px",
         }}
       >
         <div>
@@ -58,8 +58,7 @@ const Shopping = ({
             className="button cartButton"
             onClick={() => tableRef.current.focus()}
           >
-            {" "}
-            Cart{" "}
+            Cart
           </button>
         </div>
       </div>
@@ -71,7 +70,7 @@ const Shopping = ({
           margin: "0 100px",
         }}
       >
-        <Suspense fallback={<div>Loading ...</div>}>
+        <Suspense fallback={<Loading />}>
           {availableItems?.map(item => (
             <Card item={item} key={item?.name} addItem={addItem} />
           ))}

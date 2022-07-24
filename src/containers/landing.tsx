@@ -7,7 +7,7 @@ function Landing() {
       <div>
         <div>
           <h1>Welcome to SHOE KINGDOM ... </h1>
-          <h3>A place you can order any NIKE shoe ever</h3>
+          <h3>A place you can order any NIKE shoe worlwide</h3>
         </div>
       </div>
     </div>
