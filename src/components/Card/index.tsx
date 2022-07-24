@@ -1,4 +1,5 @@
 import { Item } from "../../models/Item";
+import "./card.css";
 
 type CardProps = {
   item: Item;
@@ -7,19 +8,20 @@ type CardProps = {
 };
 
 const Card = ({ item, addItem }: CardProps) => {
-  const { name, image, price } = item;
+  const { name, image, store, price } = item;
   return (
-    <div
-      style={{
-        flex: "0 1 24%",
-      }}
-    >
+    <div className="card">
       <img style={{ maxWidth: "350px" }} src={image} alt={name} />
-      <div style={{ display: "flex" }}>
-        <div>{name}</div>
-        <div>{price}</div>
+      <div className="content">
+        <div className="description">
+          <div style={{ textAlign: "start" }}>
+            <div style={{ fontWeight: "600" }}>{name}</div>
+            <div style={{ fontSize: "14px" }}>{store}</div>
+          </div>
+          <div style={{ fontWeight: "800" }}>{price} $</div>
+        </div>
         <div>
-          <button onClick={() => addItem(item)}> +</button>
+          <button className="addButton" onClick={() => addItem(item)}> +</button>
         </div>
       </div>
     </div>

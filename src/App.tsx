@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import "./App.css";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Landing from "./containers/landing";
 import History from "./containers/history";
 import Shopping from "./containers/shopping";
-import { Item } from "./models/Item";
+import NavBar from "./components/NavBar";
+import { CompletedPurchase, Item, PurchasedtItem } from "./models/Item";
 
 import img1 from "./assets/18769028_40547184.png";
 import img2 from "./assets/13158083_38098584.png";
@@ -22,10 +23,12 @@ import img12 from "./assets/15087982_27542588.png";
 const storeList = [
   {
     id: "0001",
-    name: 'AIR FORCE 1 LOW `07 "White on White"',
+    name: 'AIR FORCE 1',
     image: img1,
     price: "99",
     quantity: 100,
+    store: 'Nike Australia',
+    storeUrl: 'https://www.nike.com/au/'
   },
   {
     id: "0002",
@@ -33,20 +36,26 @@ const storeList = [
     image: img2,
     price: "92",
     quantity: 30,
+    store: 'Nike Australia',
+    storeUrl: 'https://www.nike.com/au/'
   },
   {
     id: "0003",
-    name: 'AIR MAX 1 "Travis Scott - Baroque Brown"',
+    name: 'AIR MAX 1 ',
     image: img3,
     price: "77",
     quantity: 5,
+    store: 'Nike Spain',
+    storeUrl: 'https://www.nike.com/es/'
   },
   {
     id: "0004",
-    name: 'LOUIS VUITTON AIR FORCE 1 LOW "Virgil Abloh - White/White"',
+    name: 'LOUIS VUITTON AIR',
     image: img4,
-    price: "99$",
+    price: "99",
     quantity: 4,
+    store: 'Nike Spain',
+    storeUrl: 'https://www.nike.com/es/'
   },
   {
     id: "0004",
@@ -54,13 +63,17 @@ const storeList = [
     image: img5,
     price: "112",
     quantity: 33,
+    store: 'Nike Netherlands',
+    storeUrl: 'https://www.nike.com/nl/en/'
   },
   {
     id: "0005",
     name: 'Nike Dunk 32"',
     image: img6,
-    price: "62$",
+    price: "62",
     quantity: 12,
+    store: 'Nike Luxembourg',
+    storeUrl: 'https://www.nike.com/lu/en/'
   },
   {
     id: "0006",
@@ -68,6 +81,8 @@ const storeList = [
     image: img7,
     price: "65",
     quantity: 18,
+    store: 'Nike Luxembourg',
+    storeUrl: 'https://www.nike.com/lu/en/'
   },
   {
     id: "0007",
@@ -75,13 +90,17 @@ const storeList = [
     image: img8,
     price: "33",
     quantity: 21,
+    store: 'Nike Belgium',
+    storeUrl: 'https://www.nike.com/be/en/'
   },
   {
     id: "0008",
-    name: "AIR FORCE 1",
+    name: "AIR FORCE 18",
     image: img9,
     price: "159",
     quantity: 25,
+    store: 'Nike Denmark',
+    storeUrl: 'https://www.nike.com/dk/en/'
   },
   {
     id: "0009",
@@ -89,6 +108,8 @@ const storeList = [
     image: img10,
     price: "52",
     quantity: 33,
+    store: 'Nike Denmark',
+    storeUrl: 'https://www.nike.com/dk/en/'
   },
   {
     id: "0010",
@@ -96,6 +117,8 @@ const storeList = [
     image: img11,
     price: "152",
     quantity: 35,
+    store: 'Nike Denmark',
+    storeUrl: 'https://www.nike.com/dk/en/'
   },
   {
     id: "0011",
@@ -103,30 +126,38 @@ const storeList = [
     image: img12,
     price: "82",
     quantity: 55,
+    store: 'Nike Denmark',
+    storeUrl: 'https://www.nike.com/dk/en/'
   },
 ];
 
 function App() {
-  const [previous, setPrevious] = useState<Item[][]>([]);
+  const navigate = useNavigate();
+  const [completed, setCompleted] = useState<CompletedPurchase[]>([]);
   const [storeItems, setStoreItems] = useState<Item[]>(storeList);
-  const [list, setList] = useState<Item[]>([]);
-
-  useEffect(() => {}, [list]);
+  const [shoppingList, setShoppingList] = useState<PurchasedtItem[]>([]);
 
   const addItemToList = (item: Item) => {
-    let isExisting = list?.find(listItem => listItem?.id === item.id);
+    let isExisting = shoppingList?.find(listItem => listItem?.id === item.id);
     let updatedItems = [];
     if (isExisting) {
-      updatedItems = list?.map((li: Item) => {
+      updatedItems = shoppingList?.map((li: Item) => {
         if (li.id === item.id) {
-          return { ...li, quantity: (li.quantity || 0) + 1 };
+          return {
+            ...li,
+            quantity: (li.quantity || 0) + 1,
+            purchasedDate: Date.now(),
+          };
         }
-        return li;
+        return { ...li, purchasedDate: Date.now() };
       });
 
-      setList(updatedItems);
+      setShoppingList(updatedItems);
     } else {
-      setList([...list, { ...item, quantity: 1 }]);
+      setShoppingList([
+        ...shoppingList,
+        { ...item, quantity: 1, purchasedDate: Date.now() },
+      ]);
     }
 
     const storeUpdatedList = storeItems?.map((listItem: Item) => {
@@ -142,35 +173,46 @@ function App() {
   };
 
   const removeItemFromList = (id: string) => {
-    let filtered = list?.filter(item => item?.id !== id);
-    setList(filtered);
+    let filtered = shoppingList?.filter(item => item?.id !== id);
+    setShoppingList(filtered);
   };
 
   const onCheckout = () => {
-    setPrevious([...previous, list]);
-    setList([]);
+    let total = shoppingList?.reduce(
+      (total, item) => total + parseFloat(item?.price),
+      0
+    );
+
+    const completedPurchase: CompletedPurchase = {
+      total,
+      completedOn: Date.now(),
+      items: shoppingList
+    };
+
+    setCompleted([...completed, completedPurchase]);
+    setShoppingList([]);
+    navigate("/history");
   };
 
   return (
-    <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/history" element={<History />} />
-          <Route
-            path="/shopping"
-            element={
-              <Shopping
-                addItem={addItemToList}
-                availableItems={storeItems}
-                items={list}
-                removeItem={removeItemFromList}
-                onCheckout={onCheckout}
-              />
-            }
-          />
-          <Route path="*" element={<Landing />} />
-        </Routes>
-      </BrowserRouter>
+    <div>
+      <NavBar />
+      <Routes>
+        <Route path="/history" element={<History completedPurchases={completed} />} />
+        <Route
+          path="/shopping"
+          element={
+            <Shopping
+              addItem={addItemToList}
+              availableItems={storeItems}
+              shoppingList={shoppingList}
+              removeItem={removeItemFromList}
+              onCheckout={onCheckout}
+            />
+          }
+        />
+        <Route path="*" element={<Landing />} />
+      </Routes>
     </div>
   );
 }
